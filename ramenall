@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramen ALL | 境界線なき、一杯。</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --accent-color: #d4af37;
+            --sub-text: #888888;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Serif JP', serif;
+            scroll-behavior: smooth;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Navigation / Logo Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 100;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.8), transparent);
+        }
+
+        .nav-logo {
+            height: 60px; /* ナビゲーション用の小さめロゴ */
+            filter: brightness(1.2);
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('5865.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transform: scale(1.05);
+            transition: transform 8s ease-out;
+        }
+
+        header:hover .hero-bg {
+            transform: scale(1);
+        }
+
+        /* メインの巨大ロゴ演出 */
+        .main-logo {
+            width: 600px; /* 高級バーのような象徴的なサイズ */
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-out forwards;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 0.5em;
+            color: var(--accent-color);
+            animation: fadeIn 4s ease-out forwards;
+        }
+
+        /* Section Layout */
+        section {
+            padding: 120px 10%;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            display: block;
+            font-size: 0.75rem;
+            letter-spacing: 0.6em;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        /* Image Focus Section */
+        .product-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .main-img-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .main-img-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        .concept-text {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 200;
+            line-height: 2.5;
+            letter-spacing: 0.15em;
+        }
+
+        /* Menu Section */
+        .menu-box {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 80px 40px;
+            display: inline-block;
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: 200;
+            margin: 25px 0;
+            color: var(--text-color);
+        }
+
+        /* Footer */
+        footer {
+            padding: 100px 10%;
+            background-color: #000;
+            font-size: 0.85rem;
+            color: var(--sub-text);
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .footer-logo {
+            width: 120px;
+            opacity: 0.6;
+            margin-bottom: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            text-align: left;
+        }
+
+        h3 {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 80px 5%; }
+            .main-logo { width: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <div class="hero-bg"></div>
+        <img src="logo.png" alt="Ramen ALL Logo" class="main-logo">
+        <p class="hero-subtitle">境界線なき、一杯。</p>
+    </header>
+
+    <section class="scroll-reveal product-display">
+        <span class="highlight">THE MASTERPIECE</span>
+        <div class="main-img-wrapper">
+            <img src="5865.jpg" alt="All In One Ramen">
+        </div>
+        <div class="concept-text">
+            醤油の鋭さ、味噌の深奥、豚骨の力動、塩の純粋。<br>
+            かつて分かたれていた四つの個性が、<br>
+            今、この一つの器の中で「最適解」として結実する。
+        </div>
+    </section>
+
+    <section class="scroll-reveal">
+        <div class="menu-box">
+            <span class="highlight">MENU</span>
+            <h2 style="font-weight: 400; letter-spacing: 0.3em; color: var(--accent-color);">ALL IN ONE</h2>
+            <p class="price">¥2,500</p>
+            <p style="font-size: 0.8rem; letter-spacing: 0.1em; opacity: 0.7;">
+                お出しできるのは、この一品のみとなっております。<br>
+                一滴の調和も崩さぬよう、心して供します。
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <img src="logo.png" alt="Ramen ALL Logo" class="footer-logo">
+        <div class="footer-grid">
+            <div class="scroll-reveal">
+                <h3>ADDRESS</h3>
+                <p>〒000-0000 東京都某区極味1-1-1</p>
+                <p>11:30 — 15:00 / 18:00 — 21:00</p>
+                <p>※スープ切れ次第、幕を閉じます。</p>
+            </div>
+            <div class="scroll-reveal">
+                <h3>GUIDE</h3>
+                <p>当店のラーメンは、まず中心から味わい、<br>
+                徐々に周囲の層を混ぜ合わせてください。<br>
+                味の変化が、一つの物語として完結します。</p>
+            </div>
+　　　　　　<div class="scroll-reveal">
+                <h3>INFOMATION</h3>
+                <p>当店は実際には存在しません。</p>
+            </div>
+        </div>
+        <p style="margin-top: 100px; text-align: center; font-size: 0.7rem; letter-spacing: 0.2em;">
+            &copy; Ramen ALL. THE ULTIMATE HARMONY.
+        </p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
